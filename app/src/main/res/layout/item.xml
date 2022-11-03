@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/avata"
+        android:layout_width="48dp"
+        android:layout_height="52dp"
+        android:src="@drawable/ic_baseline_laptop_24"
+        android:layout_marginRight="20dp"
+        >
+
+    </ImageView>
+    
+    <TextView
+        android:id="@+id/tvname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/avata"
+        android:text="name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black">
+
+    </TextView>
+    <TextView
+        android:id="@+id/tvphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/avata"
+        android:layout_below="@+id/tvname"
+        android:text="name"
+        >
+
+    </TextView>
+    <TextView
+        android:id="@+id/tvid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/avata"
+        android:layout_below="@+id/tvphone"
+        android:text="id"
+        >
+
+    </TextView>
+
+</RelativeLayout>
