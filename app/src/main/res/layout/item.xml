@@ -7,7 +7,7 @@
         android:id="@+id/avata"
         android:layout_width="48dp"
         android:layout_height="52dp"
-        android:src="@drawable/ic_baseline_laptop_24"
+        android:src="@drawable/ic_baseline_people_24"
         android:layout_marginRight="20dp"
         >
 
