@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="id">
+        android:hint="ma sinh vien">
 
     </EditText>
     <EditText
@@ -18,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/id"
         android:hint="ten may">
+        android:hint="Ho va ten sinh vien">
 
     </EditText>
     <EditText
@@ -26,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editname"
         android:hint="the loai"
+        android:hint="lop"
         >
 
     </EditText>
