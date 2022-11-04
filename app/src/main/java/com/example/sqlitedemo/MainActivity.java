@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.PrimitiveIterator;
 
 public class MainActivity extends AppCompatActivity {
-    private SQLiteDatabase db;
-    private ListView lvdatas;
-    private Button btnadds,xoa,btnupdate;
-    private EditText editname, editphone,editid;
+    private SQLiteDatabase db_156;
+    private ListView lvdatas_156;
+    private Button btnadds_156,xoa_156,btnupdate_156;
+    private EditText editname_156, editphone_156,editid_156;
 
     private ArrayAdapter<user> adapter;
     private ArrayList<user> userlist = new ArrayList<>();
@@ -37,31 +37,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initdata();
-        createCategory();
-        lvdatas = findViewById(R.id.lvdata);
-        editname = findViewById(R.id.editname);
-        editphone = findViewById(R.id.editphone);
-        editid = findViewById(R.id.id);
-        btnadds = findViewById(R.id.btnAdd);
+        lvdatas_156 = findViewById(R.id.lvdata);
+        editname_156 = findViewById(R.id.editname);
+        editphone_156 = findViewById(R.id.editphone);
+        editid_156 = findViewById(R.id.id);
+        btnadds_156 = findViewById(R.id.btnAdd);
 
 
-        btnupdate = findViewById(R.id.btnupdate);
-        btnupdate.setOnClickListener(new View.OnClickListener() {
+        btnupdate_156 = findViewById(R.id.btnupdate);
+        btnupdate_156.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 update();
                 loaddata();
             }
         });
-        btnadds.setOnClickListener(new View.OnClickListener() {
+        btnadds_156.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 insertrow();
                 loaddata();
             }
         });
-        xoa= findViewById(R.id.btnXoa);
-        xoa.setOnClickListener(new View.OnClickListener() {
+        xoa_156= findViewById(R.id.btnXoa);
+        xoa_156.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deleteContact();
@@ -86,58 +85,49 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-        lvdatas.setAdapter(adapter);
+        lvdatas_156.setAdapter(adapter);
 
         loaddata();
     }
 
     private void initdata(){
-        db= openOrCreateDatabase("QuanLyMayTinh.db",MODE_PRIVATE,null);
+        db_156= openOrCreateDatabase("QuanLySinhVien.db",MODE_PRIVATE,null);
 
-        String sql ="CREATE TABLE IF NOT EXISTS MayTinh (id text primary key ,name text, theloai text references createCategory(maCategory) on delete cascade )";
-        db.execSQL(sql);
+        String sql ="CREATE TABLE IF NOT EXISTS SinhVien (id text primary key ,name text, theloai text references createCategory(maCategory) on delete cascade )";
+        db_156.execSQL(sql);
     }
 
-    private void createCategory(){
-        String sql ="CREATE TABLE IF NOT EXISTS Category (id text primary key ,name text, maCategory text )";
-        db.execSQL(sql);
-    }
-    private void isertCategory(){
 
-        String sql = "INSERT INTO Category (id,name,maCategory) values ('001','Categoty1','Acer')," +
-                "('002','Categoty2','Thinkpab'),('003','Categoty3','asus')";
-        db.execSQL(sql);
-    }
     private void insertrow(){
-        String id = editid.getText().toString();
-        String name = editname.getText().toString();
-        String theloai = editphone.getText().toString();
-        String sql = "INSERT INTO MayTinh (id,name,theloai) values ('" + id +"','" + name +"','" + theloai +"')";
-        db.execSQL(sql);
+        String id = editid_122.getText().toString();
+        String name = editname_122.getText().toString();
+        String theloai = editphone_122.getText().toString();
+        String sql = "INSERT INTO SinhVien (id,name,theloai) values ('" + id +"','" + name +"','" + theloai +"')";
+        db_156.execSQL(sql);
     }
     public void deleteContact()
     {
-        String id = editid.getText().toString();
-        db.delete("MayTinh","id=?",new String[]{id});
+        String id = editid_156.getText().toString();
+        db_156.delete("SinhVien","id=?",new String[]{id});
     }
 
     public boolean update()
     {
-        String id = editid.getText().toString();
-        String name = editname.getText().toString();
-        String theloai = editphone.getText().toString();
+        String id = editid_156.getText().toString();
+        String name = editname_156.getText().toString();
+        String theloai = editphone_156.getText().toString();
         ContentValues cv = new ContentValues();
         cv.put("name",name);
         cv.put("theloai",theloai);
-        db.update("MayTinh", cv, "id =?", new String[]{id});
+        db_156.update("SinhVien", cv, "id =?", new String[]{id});
         return true;
     }
 
 
     private void loaddata(){
          userlist.clear();
-        String sql = "SELECT * FROM MayTinh";
-        Cursor cursor =db.rawQuery(sql,null);
+        String sql = "SELECT * FROM SinhVien";
+        Cursor cursor =db_156.rawQuery(sql,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             String id =cursor.getString(0);
